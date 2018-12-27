@@ -1,0 +1,22 @@
+<div class="container mt-5">
+  <div class="row" *ngIf="posts.length > 0">
+    <div class="col-sm-4 mt-3" *ngFor="let post of posts">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">{{ post.content }}</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="posts.length <= 0">
+    <div class="col-sm-12">
+        <div class="alert alert-secondary">
+            No post yet !
+        </div>
+    </div>
+  </div>
+</div>
