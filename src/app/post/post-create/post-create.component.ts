@@ -19,8 +19,9 @@ export class PostCreateComponent implements OnInit {
   }
 
   onAddPost(Form: NgForm) {
-    //this.newPost = this.enteredValue;
-
+    if (Form.invalid) {
+      return;
+    }
     const post: Post = {
       title: Form.value.title,
       content: Form.value.content
