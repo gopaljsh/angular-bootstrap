@@ -5,8 +5,8 @@
         <div class="card-body">
           <form (submit)="onAddPost(postForm)" #postForm="ngForm">
               <h5 class="card-title">Write New Post</h5>
-              <p class="card-text"><input type="text" class="form-control" name="title" ngModel /></p>
-              <p class="card-text"><textarea class="form-control" rows="3" name="content" ngModel></textarea></p>
+              <p class="card-text"><input type="text" class="form-control" name="title" ngModel required placeholder="Post title" /></p>
+              <p class="card-text"><textarea class="form-control" rows="3" name="content" ngModel required placeholder="Post content"></textarea></p>
               <button type="submit" class="card-link">Save Post</button>
           </form>
         </div>

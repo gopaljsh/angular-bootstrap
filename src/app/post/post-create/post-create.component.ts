@@ -10,8 +10,6 @@ import { PostServiceComponent } from '../post.service';
   styleUrls: ['./post-create.component.css']
 })
 export class PostCreateComponent implements OnInit {
-  enteredTitle = '';
-  enteredContent = '';
 
   constructor(public postService: PostServiceComponent) { }
 
@@ -23,11 +21,13 @@ export class PostCreateComponent implements OnInit {
       return;
     }
     const post: Post = {
+      id: null,
       title: Form.value.title,
       content: Form.value.content
     };
 
     this.postService.addPost(Form.value.title, Form.value.content);
+    Form.resetForm();
   }
 
 }
