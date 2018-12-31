@@ -5,7 +5,7 @@
         <div class="card-body">
           <h5 class="card-title">{{ post.title }}</h5>
           <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">{{ post.content | slice:0:11 }}</p>
+          <p class="card-text">{{ post.content | slice:0:4 }}</p>
           <a class="btn btn-primary" [routerLink]="['/edit', post.id]">Edit</a>&nbsp;
           <button class="btn btn-danger" (click)="onDelete(post.id)">Delete</button>
         </div>
