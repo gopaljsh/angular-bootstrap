@@ -1,13 +1,18 @@
 <span class="spinner" *ngIf="isLoading"><img src="../assets/images/35.gif" /></span>
-<div class="container mt-5">
+<div class="container mt-5" *ngIf="!isLoading">
   <div class="row">
     <div class="col-sm-12">
       <div class="card">
         <div class="card-body">
-          <form (submit)="onAddPost(postForm)" #postForm="ngForm" *ngIf="!isLoading">
+          <form (submit)="onAddPost()" [formGroup]="form">
               <h5 class="card-title">Write New Post</h5>
-              <p class="card-text"><input type="text" class="form-control" name="title" [ngModel]="post?.title" required placeholder="Post title" /></p>
-              <p class="card-text"><textarea class="form-control" rows="3" name="content" [ngModel]="post?.content" required placeholder="Post content"></textarea></p>
+              <p class="card-text"><input type="text" class="form-control" formControlName="title" placeholder="Post title" /></p>
+              <p class="card-text"><textarea class="form-control" rows="3" formControlName="content" placeholder="Post content"></textarea></p>
+              <p><button type="button" (click)="clickrImage.click()">PickImage</button> <input type="file" class="ImageHiddenInput" (change)="onImagePicked($event)" #clickrImage /></p>
+              <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+                <img [src]="imagePreview" [alt]="form.value.title">
+              </div>
+
               <button type="submit" class="card-link">Save Post</button>
           </form>
         </div>
