@@ -34,7 +34,7 @@ export class PostCreateComponent implements OnInit {
         this.postService.getPost(this.postId)
           .subscribe((postData) => {
             this.isLoading = false;
-            this.post = {id: postData._id, title: postData.title, content: postData.content};
+            this.post = {id: postData._id, title: postData.title, content: postData.content, imagePath: null};
             this.form.setValue({
               'title': this.post.title,
               'content': this.post.content
@@ -64,14 +64,14 @@ export class PostCreateComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    const post: Post = {
-      id: null,
-      title: this.form.value.title,
-      content: this.form.value.content
-    };
+    // const post: Post = {
+    //   id: null,
+    //   title: this.form.value.title,
+    //   content: this.form.value.content
+    // };
 
     if (this.mode === 'create') {
-      this.postService.addPost(this.form.value.title, this.form.value.content);
+      this.postService.addPost(this.form.value.title, this.form.value.content, this.form.value.image);
     } else {
       this.postService.updatedPost(this.postId, this.form.value.title, this.form.value.content);
     }

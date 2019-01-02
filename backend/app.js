@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -11,6 +12,8 @@ const Post = require('./models/post');
 app.use(bodyParser.json())
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
+//allow request to access image folder by request
+app.use("/images", express.static(path.join("backend/images")));
 
 //MongoDb connection
 const db = 'mongodb+srv://gopal:UBxrYKbFJlTXouM8@cluster0-dr9sg.mongodb.net/test?retryWrites=true';
