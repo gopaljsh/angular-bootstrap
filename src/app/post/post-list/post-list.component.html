@@ -1,3 +1,9 @@
+<div class="jumbotron jumbotron-fluid banner">
+  <div class="container">
+    <h1 class="display-4">Technical World !</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</div>
 <span class="spinner" *ngIf="isLoading"><img src="../assets/images/35.gif" /></span>
 <div class="container mt-5" *ngIf="posts.length > 0 && !isLoading">
   <div class="row">
@@ -6,8 +12,7 @@
         <img [src]="post.imagePath" class="card-img-top" [alt]="post.title" />
         <div class="card-body">
           <h5 class="card-title">{{ post.title }}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">{{ post.content | slice:0:4 }}</p>
+          <p class="card-text">{{ post.content | slice:0:90 }}<span *ngIf="post.content.length > 10">...</span></p>
           <a class="btn btn-primary" [routerLink]="['/edit', post.id]">Edit</a>&nbsp;
           <button class="btn btn-danger" (click)="onDelete(post.id)">Delete</button>
         </div>
@@ -19,6 +24,11 @@
         <div class="alert alert-secondary">
             No post yet !
         </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-xs-12 col-12">
+        <pagination [totalItems]="totalPosts" [itemsPerPage]="postPerPage" [rotate]="rotate" (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" [maxSize]="5"></pagination>
     </div>
   </div>
 </div>

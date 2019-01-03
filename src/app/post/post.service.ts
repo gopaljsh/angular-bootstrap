@@ -15,8 +15,9 @@ export class PostServiceComponent {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  getPosts() {
-    this.http.get<{message: string, posts: any}>('http://localhost:3000/api/posts')
+  getPosts(postsPerPage: number, currentPage: number) {
+    const queryParams = `?pageSize=${postsPerPage}&page=${currentPage}`;
+    this.http.get<{message: string, posts: any}>('http://localhost:3000/api/posts' + queryParams)
       .pipe(map((postData) => {
         return postData.posts.map((post) => {
           return {
@@ -56,20 +57,24 @@ export class PostServiceComponent {
       });
   }
 
-  updatedPost(id: string, title: string, content: string) {
-    const post = {
-      id: id,
-      title: title,
-      content: content,
-      imagePath: null
-    };
-    this.http.put('http://localhost:3000/api/posts/' + id, post)
+  updatedPost(id: string, title: string, content: string, image: File | string) {
+    let postData: FormData | Post;
+    if (typeof(image) === 'object') {
+      postData = new FormData();
+      postData.append('id', id);
+      postData.append('title', title);
+      postData.append('content', content);
+      postData.append('image', image, title);
+    } else {
+      postData = {
+        id: id,
+        title: title,
+        content: content,
+        imagePath: image
+      };
+    }
+    this.http.put('http://localhost:3000/api/posts/' + id, postData)
       .subscribe((response) => {
-        const updatedPosts = [...this.posts];
-        const oldPostIndex = this.posts.findIndex(p => p.id === post.id);
-        updatedPosts[oldPostIndex] = post;
-        this.posts = updatedPosts;
-        this.postUpdated.next([...this.posts]);
         this.router.navigate(['/']);
       });
   }
