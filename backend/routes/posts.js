@@ -54,6 +54,7 @@ router.get('' , (req, res, next) => {
   const pageSize = +req.query.pageSize;
   const currentPage = +req.query.page;
   const postQuery = Post.find();
+  let fetchedPost;
   if (pageSize && currentPage) {
     postQuery
       .skip(pageSize * (currentPage - 1))
@@ -61,11 +62,17 @@ router.get('' , (req, res, next) => {
   }
   postQuery
     .then((document) => {
+      fetchedPost = document;
+      return Post.countDocuments();
+    })
+    .then(count => {
       res.status(200).json({
         message: 'Post fetched successfully!',
-        posts: document
+        posts: fetchedPost,
+        maxPosts: count
       });
     });
+
 });
 
 router.get('/:id', (req, res, next) => {
@@ -99,7 +106,7 @@ router.put('/:id', multer({storage: storage}).single("image"), (req, res, next) 
 })
 
 router.delete('/:id' ,(req, res, next) => {
-  console.log(req.params.id);
+  //console.log(req.params.id);
   Post.deleteOne({_id: req.params.id})
     .then((result) => {
       res.status(200).json({
