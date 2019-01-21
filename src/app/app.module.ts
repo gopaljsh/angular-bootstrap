@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { from } from 'rxjs/internal/observable/from';
 import { HttpClientModule } from '@angular/common/http';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
@@ -11,6 +11,8 @@ import { PostCreateComponent } from './post/post-create/post-create.component';
 import { HeaderComponent } from './header/header.component';
 import { PostListComponent } from './post/post-list/post-list.component';
 import { BannerComponent } from './banner/banner.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignUpComponent } from './auth/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { BannerComponent } from './banner/banner.component';
     PostCreateComponent,
     HeaderComponent,
     BannerComponent,
-    PostListComponent
+    PostListComponent,
+    LoginComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +30,7 @@ import { BannerComponent } from './banner/banner.component';
     ReactiveFormsModule,
     HttpClientModule,
     PaginationModule.forRoot(),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

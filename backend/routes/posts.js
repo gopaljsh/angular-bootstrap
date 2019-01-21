@@ -72,7 +72,6 @@ router.get('' , (req, res, next) => {
         maxPosts: count
       });
     });
-
 });
 
 router.get('/:id', (req, res, next) => {

@@ -4,9 +4,11 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const postRoutes = require('./routes/posts');
+const userRoutes = require('./routes/user');
 const app = express();
 
-const Post = require('./models/post');
+//const Post = require('./models/post');
+//const User = require('./models/user');
 
 // parse application/json
 app.use(bodyParser.json())
@@ -17,14 +19,14 @@ app.use("/images", express.static(path.join("backend/images")));
 
 //MongoDb connection
 const db = 'mongodb+srv://gopal:UBxrYKbFJlTXouM8@cluster0-dr9sg.mongodb.net/test?retryWrites=true';
-mongoose.connect(db, { useNewUrlParser: true })
+mongoose.connect(db, { useCreateIndex: true, useNewUrlParser: true })
     .then(() => {
         console.log('Connected to database')
     })
     .catch((err) => {
         console.log(err);
     })
-
+//mongoose.set('useCreateIndex', true); one more way to get rid of error like collection.ensureIndex is deprecated.
 
 
 app.use((req, res, next) => {
@@ -35,5 +37,6 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/posts", postRoutes);
+app.use("/api/user", userRoutes);
 
 module.exports = app;
