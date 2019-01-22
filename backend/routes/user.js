@@ -4,9 +4,12 @@ const bcrypt = require('bcrypt-nodejs');
 const User = require('../models/user');
 const router = express.Router();
 
-router.post('', (req, res, next) => {
-  bcrypt.hash(req.body.password, 10)
-    then(hash => {
+router.post('/signup', (req, res, next) => {
+  bcrypt.genSalt(10, (err, salt) => {
+    if (err) {
+      return;
+    }
+    bcrypt.hash(req.body.password, salt, null, (err, hash) => {
       const user = new User({
         email: req.body.email,
         password: hash
@@ -18,14 +21,15 @@ router.post('', (req, res, next) => {
             message: 'User created Successfully!',
             result: result
           })
-          .catch(err => {
-            res.status(500).json({
-              error: err
-            });
-          });
         })
-    });
-})
+        .catch(err => {
+          res.status(500).json({
+            error: err.message
+          })
+        })
+    })
+  });
+});
 
 
 module.exports = router;
