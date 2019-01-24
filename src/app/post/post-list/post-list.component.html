@@ -12,9 +12,9 @@
         <img [src]="post.imagePath" class="card-img-top" [alt]="post.title" />
         <div class="card-body">
           <h5 class="card-title">{{ post.title }}</h5>
-          <p class="card-text">{{ post.content | slice:0:90 }}<span *ngIf="post.content.length > 10">...</span></p>
-          <a class="btn btn-primary" [routerLink]="['/edit', post.id]">Edit</a>&nbsp;
-          <button class="btn btn-danger" (click)="onDelete(post.id)">Delete</button>
+          <p class="card-text">{{ post.content | slice:0:90 }} <span *ngIf="post.content.length > 30">...</span></p>
+          <a class="btn btn-primary" [routerLink]="['/edit', post.id]" *ngIf="userIsAuthenticated">Edit</a>&nbsp;
+          <button class="btn btn-danger" (click)="onDelete(post.id)" *ngIf="userIsAuthenticated">Delete</button>
         </div>
       </div>
     </div>
@@ -30,6 +30,6 @@
     <div class="col-sm-8">
         <pagination [totalItems]="totalPosts" [itemsPerPage]="postPerPage" [rotate]="rotate" (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" [maxSize]="5"></pagination>
     </div>
-    <div class="col-sm-4 text-right">{{ postPerPage * currentPage }} of {{ totalPosts }}</div>
+    <div class="col-sm-4 text-right">{{ numberOfPosts * currentPage }} of {{ totalPosts }}</div>
   </div>
 </div>

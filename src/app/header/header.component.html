@@ -2,11 +2,10 @@
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" routerLink="/">MyMessages</a>
   <div class="mr-right">
-    <a class="navbar-item" routerLink="/" routerLinkActive="active">List</a> &nbsp;
-    <a class="navbar-item" routerLink="/create" routerLinkActive="active">Create</a>
-  </div>
-  <div class="mr-right">
-    <a class="navbar-item" routerLink="/login" routerLinkActive="active">Login</a> &nbsp;
-    <a class="navbar-item" routerLink="/signup" routerLinkActive="active">Signup</a>
+    <a class="navbar-item" routerLink="/" routerLinkActive="active" *ngIf="userisAuthenticated">List</a> &nbsp;
+    <a class="navbar-item" routerLink="/create" routerLinkActive="active" *ngIf="userisAuthenticated">Create</a> &nbsp;
+    <a class="navbar-item" routerLink="/login" routerLinkActive="active" *ngIf="!userisAuthenticated">Login</a> &nbsp;
+    <a class="navbar-item" routerLink="/signup" routerLinkActive="active" *ngIf="!userisAuthenticated">Signup</a>
+    <button class="navbar-item" (click)="onLogout()" *ngIf="userisAuthenticated">Logout</button>
   </div>
 </nav>

@@ -4,6 +4,7 @@ import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 
 import { Post } from '../post.model';
 import { PostServiceComponent } from '../post.service';
+import { AuthServiceComponent } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-post-list',
@@ -15,10 +16,13 @@ export class PostListComponent implements OnInit, OnDestroy {
   private postsSub: Subscription;
   isLoading = false;
   totalPosts = 0;
-  postPerPage = 1;
+  postPerPage = 5;
   currentPage = 1;
+  numberOfPosts: number;
+  userIsAuthenticated = false;
+  private authStatusSub: Subscription;
 
-  constructor(public PostService: PostServiceComponent ) {}
+  constructor(public PostService: PostServiceComponent, private authService: AuthServiceComponent ) {}
 
   ngOnInit() {
     this.isLoading = true;
@@ -28,6 +32,12 @@ export class PostListComponent implements OnInit, OnDestroy {
         this.isLoading = false;
         this.totalPosts = postData.postCount;
         this.posts = postData.posts;
+        this.numberOfPosts = this.posts.length;
+      });
+    this.userIsAuthenticated = this.authService.getStatus();
+    this.authStatusSub = this.authService.getAuthStatus()
+      .subscribe(isAuthenticated => {
+        this.userIsAuthenticated = isAuthenticated;
       });
   }
 
