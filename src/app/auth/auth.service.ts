@@ -54,6 +54,9 @@ export class AuthServiceComponent {
           this.tokenTimer = setTimeout(() => {
             this.logoutUser();
           }, expirationIn * 1000);
+          const now = new Date();
+          const expirationDate = new Date(now.getTime() + expirationIn * 1000);
+          this.saveAuthData(token, expirationDate);
           this.isAuthenticated = true;
           this.authServiceListner.next(true);
           this.router.navigate(['/']);
@@ -67,5 +70,15 @@ export class AuthServiceComponent {
     clearTimeout(this.tokenTimer);
     this.authServiceListner.next(false);
     this.router.navigate(['/login']);
+  }
+
+  private saveAuthData(token: string, expirationDate: Date) {
+    localStorage.setItem('token', token);
+    localStorage.setItem('expirationIn', expirationDate.toISOString());
+  }
+
+  private clearData() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('expirationIn');
   }
 }
