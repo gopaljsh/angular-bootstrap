@@ -19,17 +19,19 @@
       </div>
     </div>
   </div>
-  <div class="row" *ngIf="posts.length < 0">
-    <div class="col-sm-12">
-        <div class="alert alert-secondary">
-            No post yet !
-        </div>
-    </div>
-  </div>
   <div class="row mt-5">
     <div class="col-sm-8">
         <pagination [totalItems]="totalPosts" [itemsPerPage]="postPerPage" [rotate]="rotate" (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" [maxSize]="5"></pagination>
     </div>
     <div class="col-sm-4 text-right">{{ numberOfPosts * currentPage }} of {{ totalPosts }}</div>
+  </div>
+</div>
+<div class="container" *ngIf="posts.length <= 0">
+  <div class="row">
+    <div class="col-sm-12">
+        <div class="alert alert-secondary">
+            No post yet !
+        </div>
+    </div>
   </div>
 </div>
