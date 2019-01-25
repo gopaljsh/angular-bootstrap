@@ -13,8 +13,8 @@
         <div class="card-body">
           <h5 class="card-title">{{ post.title }}</h5>
           <p class="card-text">{{ post.content | slice:0:90 }} <span *ngIf="post.content.length > 30">...</span></p>
-          <a class="btn btn-primary" [routerLink]="['/edit', post.id]" *ngIf="userIsAuthenticated">Edit</a>&nbsp;
-          <button class="btn btn-danger" (click)="onDelete(post.id)" *ngIf="userIsAuthenticated">Delete</button>
+          <a class="btn btn-primary" [routerLink]="['/edit', post.id]" *ngIf="userIsAuthenticated && userId === post.creator">Edit</a>&nbsp;
+          <button class="btn btn-danger" (click)="onDelete(post.id)" *ngIf="userIsAuthenticated && userId === post.creator">Delete</button>
         </div>
       </div>
     </div>

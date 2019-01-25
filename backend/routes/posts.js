@@ -97,23 +97,37 @@ router.put('/:id', checkAuth, multer({storage: storage}).single("image"), (req, 
     _id: req.body.id,
     title: req.body.title,
     content: req.body.content,
-    imagePath: imagePath
+    imagePath: imagePath,
+    creator: req.userData.userId
   });
- Post.updateOne({ _id: req.params.id }, post)
+ Post.updateOne({ _id: req.params.id, creator: req.userData.userId }, post)
   .then((result) => {
-    res.status(200).json({
-      message: "Post updated successfull"
-    })
+    if (result.nModified > 0) {
+      res.status(200).json({
+        message: "Post updated successfull"
+      })
+    } else {
+      res.status(401).json({
+        message: "You are not allowed!"
+      });
+    }
   })
 })
 
 router.delete('/:id', checkAuth, (req, res, next) => {
   //console.log(req.params.id);
-  Post.deleteOne({_id: req.params.id})
+  Post.deleteOne({_id: req.params.id, creator: req.userData.userId})
     .then((result) => {
-      res.status(200).json({
-        message: 'Post deleted!'
-      })
+      if (result.n > 0) {
+        res.status(200).json({
+          message: 'Post deleted!'
+        })
+      } else {
+        res.status(401).json({
+          message: "You are not allowed!"
+        });
+      }
+
     })
 });
 

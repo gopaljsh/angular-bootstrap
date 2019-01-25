@@ -13,7 +13,7 @@ export class AuthServiceComponent {
   private token: string;
   private isAuthenticated = false;
   private tokenTimer: any;
-  userId: string;
+  private userId: string;
   logoutTimer: any;
   private authServiceListner = new Subject<boolean>();
 
@@ -25,6 +25,10 @@ export class AuthServiceComponent {
 
   getStatus() {
     return this.isAuthenticated;
+  }
+
+  getUserId() {
+    return this.userId;
   }
 
   getAuthStatus() {
@@ -72,6 +76,7 @@ export class AuthServiceComponent {
     this.isAuthenticated = false;
     clearTimeout(this.tokenTimer);
     this.authServiceListner.next(false);
+    this.userId = null;
     this.clearAuthData();
     this.router.navigate(['/login']);
   }
