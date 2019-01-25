@@ -84,7 +84,6 @@ export class AuthServiceComponent {
     const now = new Date();
     const expiresIn = authInformation.expirationDate.getTime() - now.getTime();
     if (expiresIn > 0) {
-        console.log('made it');
         this.token = authInformation.token;
         this.isAuthenticated = true;
         this.userId = authInformation.userId;

@@ -24,9 +24,10 @@ export class PostServiceComponent {
             title: post.title,
             content: post.content,
             id: post._id,
-            imagePath: post.imagePath
+            imagePath: post.imagePath,
+            creator: post.creator
           };
-        }), maxPosts: postData.maxPosts}
+        }), maxPosts: postData.maxPosts};
       }))
       .subscribe((transformedData) => {
         this.posts = transformedData.posts;
