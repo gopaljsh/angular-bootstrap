@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { from } from 'rxjs/internal/observable/from';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { PaginationModule, ModalModule } from 'ngx-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +14,8 @@ import { BannerComponent } from './banner/banner.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/signup/signup.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
+import { ErrorInterceptor } from './error-interceptor';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     BannerComponent,
     PostListComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +34,14 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     ReactiveFormsModule,
     HttpClientModule,
     PaginationModule.forRoot(),
+    ModalModule.forRoot(),
     FormsModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
-  bootstrap: [AppComponent]
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [ErrorComponent]
 })
 export class AppModule { }
