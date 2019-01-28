@@ -16,9 +16,13 @@ export class ErrorInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
+        let errorMsg = 'A unknown error occured';
+        if (error) {
+          errorMsg = error.error.message;
+        }
         const initialState = {
           list: [
-            error.error.message
+            errorMsg
           ]
         };
         this.bsModalRef = this.modalService.show(ErrorComponent, {initialState});
