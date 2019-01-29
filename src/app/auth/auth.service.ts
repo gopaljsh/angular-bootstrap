@@ -3,8 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 
+import { environment } from '../../environments/environment';
 import { AuthData } from '../auth/auth.model';
 
+const BACKEND_URL = environment.apiUrl + '/user/';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +42,7 @@ export class AuthServiceComponent {
       email: email,
       password: password
     };
-    this.http.post('http://localhost:3000/api/user/signup', authData)
+    this.http.post(BACKEND_URL + 'signup', authData)
       .subscribe(response => {
         console.log(response);
       });
@@ -51,7 +53,7 @@ export class AuthServiceComponent {
       email: email,
       password: password
     };
-    this.http.post<{token: string, expirationIn: number, userId: string}>('http://localhost:3000/api/user/login', authData)
+    this.http.post<{token: string, expirationIn: number, userId: string}>(BACKEND_URL + 'login', authData)
       .subscribe(response => {
         const token = response.token;
         this.token = token;
@@ -113,7 +115,7 @@ export class AuthServiceComponent {
     localStorage.removeItem('token');
     localStorage.removeItem('expirationDate');
     localStorage.removeItem('userId');
-}
+  }
 
   private getAuthData() {
     const token = localStorage.getItem('token');
