@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use("/images", express.static(path.join("backend/images")));
 
 //MongoDb connection
-const db = 'mongodb+srv://gopal:UBxrYKbFJlTXouM8@cluster0-dr9sg.mongodb.net/test?retryWrites=true';
+const db = 'mongodb+srv://gopal:' + process.env.MONGO_ALTLAS_PW + '@cluster0-dr9sg.mongodb.net/test?retryWrites=true';
 mongoose.connect(db, { useCreateIndex: true, useNewUrlParser: true })
     .then(() => {
         console.log('Connected to database')
