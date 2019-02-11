@@ -5,7 +5,7 @@
   </div>
 </div> -->
 <span class="spinner" *ngIf="isLoading"><img src="../assets/images/35.gif" /></span>
-<div class="container mt-5" *ngIf="posts.length > 0 && !isLoading">
+<div class="container" *ngIf="posts.length > 0 && !isLoading">
   <div class="row">
     <div class="col-sm-4 mt-3" *ngFor="let post of posts">
       <div class="card">
