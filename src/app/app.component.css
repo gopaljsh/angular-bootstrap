@@ -1,6 +1,11 @@
 .content-wrapper {
+  padding: 50px;
   margin-left: 400px;
+  background: #f4f4f4;
+  min-height: 100vh;
 }
+
+/* sidebar css start */
 .sidebar-left{
   width: 300px;
   background:#f0262a;
@@ -9,3 +14,62 @@
   top: 0;
   height: 100vh;
 }
+
+.user-info{
+  display: block;
+  padding: 10px 23px;
+}
+
+.personal-info {
+  display: block;
+}
+
+.personal-info .user-name {
+  display: block;
+  color:white;
+  font-family: 'Oswald', sans-serif;
+  font-size: 30px;
+}
+
+.personal-info .user-post {
+  color:white;  
+}
+
+.user-social-media {
+  display: block;
+  margin-top: 10px;
+}
+
+.user-social-media ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.user-social-media ul li {
+  display: inline-block;
+}
+
+.user-social-media ul li a {
+  color: white;
+  display: block;
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+.contact-info {
+  display: block;
+}
+
+.contact-info ul {
+  display: block;
+  padding: 0;
+  list-style-type: none;
+}
+
+.contact-info ul li {
+  color: white;
+  margin-bottom: 10px;
+}
+
+
+/* sidebar css ends */

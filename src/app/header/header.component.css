@@ -1,0 +1,38 @@
+.main-nav {
+    position: fixed;
+    left: 300px;
+    background: #e6e7e7;
+    width: 100px;
+    top: 0;
+    height: 100vh;
+    box-shadow: -4px 0 3px rgba(0,0,0,0.5);
+    z-index: 1;
+}
+
+.main-nav ul {
+    list-style-type: none;
+    padding: 30px 0;
+}
+
+.main-nav ul li {
+    display: block;
+    margin-bottom: 30px;
+}
+
+.main-nav ul li a { 
+    display: block;
+    text-align: center;
+    color: #93989c;
+    font-size: 13px;
+}
+
+.main-nav ul li a:hover { 
+    color: #515050;
+    text-decoration: none;
+}
+
+.main-nav ul li a .nav-icon {
+    display: block;
+    font-size: 25px;
+
+}

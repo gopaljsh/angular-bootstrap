@@ -1,5 +1,5 @@
 <!-- As a link -->
-<nav class="navbar navbar-light bg-light">
+<!-- <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" routerLink="/">MyMessages</a>
   <div class="mr-right">
     <a class="navbar-item" routerLink="/" routerLinkActive="active" *ngIf="userisAuthenticated">List</a> &nbsp;
@@ -8,4 +8,41 @@
     <a class="navbar-item" routerLink="/signup" routerLinkActive="active" *ngIf="!userisAuthenticated">Signup</a>
     <button class="navbar-item" (click)="onLogout()" *ngIf="userisAuthenticated">Logout</button>
   </div>
-</nav>
+</nav> -->
+
+<div class="main-nav">
+  <ul>
+    <li>
+      <a routerLink='/'>
+        <span class="nav-icon">
+            <i class="fas fa-user-tie"></i>
+        </span>
+        About Me
+      </a>
+    </li>
+    <li>
+      <a routerLink='/blog'>
+        <span class="nav-icon">
+            <i class="fas fa-globe-asia"></i>
+        </span>
+        Blog
+      </a>
+    </li>
+    <li>
+      <a routerLink='/resume'>
+        <span class="nav-icon">
+          <i class="far fa-file"></i>
+        </span>
+        Resume
+      </a>
+    </li>
+    <li>
+      <a routerLink='/contact'>
+        <span class="nav-icon">
+            <i class="far fa-envelope"></i>
+        </span>
+        Contact
+      </a>
+    </li>
+  </ul>
+</div>

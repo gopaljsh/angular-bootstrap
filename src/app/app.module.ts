@@ -17,13 +17,19 @@ import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
 import { PostModule } from './post/post.module';
 import { AuthModule } from './auth/auth.module';
+import { AboutComponent } from './about/about.component';
+import { ResumeComponent } from './resume/resume.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     BannerComponent,
-    ErrorComponent
+    ErrorComponent,
+    AboutComponent,
+    ResumeComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

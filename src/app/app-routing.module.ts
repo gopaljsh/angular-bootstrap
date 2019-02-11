@@ -6,9 +6,15 @@ import { PostCreateComponent } from './post/post-create/post-create.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/signup/signup.component';
 import { AuthGuard } from './auth/auth.guard';
+import { AboutComponent } from './about/about.component';
+import { ResumeComponent } from './resume/resume.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
-  {path: '', component: PostListComponent},
+  {path: '', component: AboutComponent},
+  {path: 'blog', component: PostListComponent},
+  {path: 'resume', component: ResumeComponent},
+  {path: 'contact', component: ContactComponent},
   {path: 'create', component: PostCreateComponent, canActivate: [AuthGuard]},
   {path: 'edit/:postId', component: PostCreateComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
