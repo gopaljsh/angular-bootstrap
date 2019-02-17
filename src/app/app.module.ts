@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { from } from 'rxjs/internal/observable/from';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxBootstrapModule } from './ngx-bootstrap.module';
+import { QuillModule } from 'ngx-quill';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +22,7 @@ import { AuthModule } from './auth/auth.module';
 import { AboutComponent } from './about/about.component';
 import { ResumeComponent } from './resume/resume.component';
 import { ContactComponent } from './contact/contact.component';
+import { ResumeEditComponent } from './resume/resume-edit/resume-edit.component';
 
 @NgModule({
   declarations: [
@@ -29,15 +32,18 @@ import { ContactComponent } from './contact/contact.component';
     ErrorComponent,
     AboutComponent,
     ResumeComponent,
-    ContactComponent
+    ContactComponent,
+    ResumeEditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     PostModule,
     NgxBootstrapModule,
     HttpClientModule,
-    AuthModule
+    AuthModule,
+    QuillModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
