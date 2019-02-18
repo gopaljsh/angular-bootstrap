@@ -9,13 +9,13 @@ import { AuthGuard } from './auth/auth.guard';
 import { AboutComponent } from './about/about.component';
 import { ResumeComponent } from './resume/resume.component';
 import { ContactComponent } from './contact/contact.component';
-import { ResumeEditComponent } from './resume/resume-edit/resume-edit.component';
+import { ResumeCreateComponent } from './resume/resume-create/resume-create.component';
 
 const routes: Routes = [
   {path: '', component: AboutComponent},
   {path: 'blog', component: PostListComponent},
   {path: 'resume', component: ResumeComponent},
-  {path: 'resume/edit', component: ResumeEditComponent},
+  {path: 'resume/create', component: ResumeCreateComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'create', component: PostCreateComponent, canActivate: [AuthGuard]},
   {path: 'edit/:postId', component: PostCreateComponent, canActivate: [AuthGuard]},

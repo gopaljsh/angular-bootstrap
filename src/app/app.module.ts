@@ -22,7 +22,7 @@ import { AuthModule } from './auth/auth.module';
 import { AboutComponent } from './about/about.component';
 import { ResumeComponent } from './resume/resume.component';
 import { ContactComponent } from './contact/contact.component';
-import { ResumeEditComponent } from './resume/resume-edit/resume-edit.component';
+import { ResumeCreateComponent } from './resume/resume-create/resume-create.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { ResumeEditComponent } from './resume/resume-edit/resume-edit.component'
     AboutComponent,
     ResumeComponent,
     ContactComponent,
-    ResumeEditComponent
+    ResumeCreateComponent
   ],
   imports: [
     BrowserModule,

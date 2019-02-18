@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
-    selector: 'app-resume-edit',
-    templateUrl: './resume-edit.component.html'
+    selector: 'app-resume-create',
+    templateUrl: './resume-create.component.html'
 })
-export class ResumeEditComponent implements OnInit {
+export class ResumeCreateComponent implements OnInit {
     resumeForm: FormGroup;
     display: string;
 
