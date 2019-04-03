@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 
 import { environment } from '../../environments/environment';
 import { Post } from './post.model';
+import { post } from 'selenium-webdriver/http';
 
 const BACKEND_URL = environment.apiUrl + '/posts/';
 

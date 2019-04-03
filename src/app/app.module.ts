@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { from } from 'rxjs/internal/observable/from';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxBootstrapModule } from './ngx-bootstrap.module';
-import { QuillModule } from 'ngx-quill';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,12 +38,13 @@ import { ResumeCreateComponent } from './resume/resume-create/resume-create.comp
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     PostModule,
     NgxBootstrapModule,
     HttpClientModule,
     AuthModule,
-    QuillModule
+    CKEditorModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

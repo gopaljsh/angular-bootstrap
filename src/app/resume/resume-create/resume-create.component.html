@@ -4,13 +4,24 @@
     <div class="col-sm-12">
       <div class="card">
         <div class="card-body">
-          <form (submit)="onSubmit()" [formGroup]="resumeForm">
-              <h5 class="card-title">Write your resume</h5>
-              <quill-editor [modules]="config" formControlName="editor"></quill-editor>
-              <button type="submit" class="card-link">Save Resume</button>
+          <form (submit)="onSubmit(myForm)" #myForm='ngForm'>
+            <h5 class="card-title">Write your resume</h5>
+            <ckeditor [(ngModel)]="mycontent" 
+            #myckeditor="ngModel"
+            name="myckeditor"
+            required
+            [config]="ckeConfig" 
+            debounce="500" 
+            >
+	</ckeditor>
+            <button type="submit" class="card-link mt-3">Save Resume</button>
           </form>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12" [innerHTML]="mycontent">
     </div>
   </div>
 </div>
