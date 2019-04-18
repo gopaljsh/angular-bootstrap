@@ -18,9 +18,9 @@ export class ResumeService {
         const resumeData = {
             resumedata: resumedata
         }
-        this.http.post('http://localhost:3000/api/resume/post', resumeData)
-            .subscribe((res) => {
-                console.log(res);
-            });
+        // this.http.post('http://localhost:3000/api/resume/post', resumeData)
+        //     .subscribe((res) => {
+        //         console.log(res);
+        //     });
     }
 }

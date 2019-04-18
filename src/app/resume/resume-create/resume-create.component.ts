@@ -11,10 +11,10 @@ import { ResumeService } from '../resume.service';
 export class ResumeCreateComponent implements OnInit {
     // ckeditorContent: string = '<p>This is the ckeditor content first text</p>';
     // @ViewChild(CKEditorComponent) ckEditor: CKEditorComponent;
-    name = 'ng2-ckeditor';
+    //name = 'ng2-ckeditor';
     mycontent: string = '<p>This is the ckeditor content first text</p>';
-    log: string = '';
-    @ViewChild("myckeditor") ckeditor: CKEditorComponent;
+    //log: string = '';
+    //@ViewChild("myckeditor") ckeditor: CKEditorComponent;
     ckeConfig: any;
 
     constructor(private resumeService: ResumeService) {}    
@@ -41,11 +41,11 @@ export class ResumeCreateComponent implements OnInit {
 
     onSubmit(form: NgForm) {
         console.log(form.value.myckeditor)
-        // if(this.resumeForm.invalid) {
-        //     return;
-        // }
+        if(form.invalid) {
+            return;
+        }
         //this.resumeContent = this.resumeForm.get('editor').value;
-        //this.resumeService.postResume(this.resumeContent);
-        //this.resumeForm.reset();
+        this.resumeService.postResume(form.value.myckeditor);
+        form.reset();
     }
 }
