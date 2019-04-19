@@ -15,7 +15,7 @@ export class ResumeComponent implements OnInit {
     ngOnInit() {
         this.resumeService.getResume()
             .subscribe((resumeContent: {resume: Resume[]}) => {
-                this.displayResume = resumeContent.resume[0].resumedata;                
+              this.displayResume = resumeContent.resume[0].resumedata;
             });
     }
 }

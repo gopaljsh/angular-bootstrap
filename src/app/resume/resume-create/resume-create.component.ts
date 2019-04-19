@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
-import { CKEditorComponent } from 'ng2-ckeditor'
+import { CKEditorComponent } from 'ng2-ckeditor';
 import { ResumeService } from '../resume.service';
 
 
@@ -9,15 +9,10 @@ import { ResumeService } from '../resume.service';
     templateUrl: './resume-create.component.html'
 })
 export class ResumeCreateComponent implements OnInit {
-    // ckeditorContent: string = '<p>This is the ckeditor content first text</p>';
-    // @ViewChild(CKEditorComponent) ckEditor: CKEditorComponent;
-    //name = 'ng2-ckeditor';
-    mycontent: string = '<p>This is the ckeditor content first text</p>';
-    //log: string = '';
-    //@ViewChild("myckeditor") ckeditor: CKEditorComponent;
-    ckeConfig: any;
+    mycontent = '<p>This is the ckeditor content first text</p>';
+    ckeConfig;
 
-    constructor(private resumeService: ResumeService) {}    
+    constructor(private resumeService: ResumeService) {}
 
     ngOnInit() {
         this.ckeConfig = {
@@ -40,11 +35,8 @@ export class ResumeCreateComponent implements OnInit {
     }
 
     onSubmit(form: NgForm) {
-        console.log(form.value.myckeditor)
-        if(form.invalid) {
-            return;
-        }
-        //this.resumeContent = this.resumeForm.get('editor').value;
+        console.log(form.value.myckeditor);
+        if (form.invalid) { return; }
         this.resumeService.postResume(form.value.myckeditor);
         form.reset();
     }
