@@ -55,7 +55,6 @@ export class ResumeCreateComponent implements OnInit, OnDestroy {
         } else {
             this.resumeService.updateResume(form.value.myckeditor, this.id);
         }
-        
         form.reset();
     }
 

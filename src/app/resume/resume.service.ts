@@ -26,7 +26,7 @@ export class ResumeService {
     }
 
     updateResume(resumedata: string, id: string) {
-        const updateResume = {
+        const updateResume: Resume = {
             resumedata: resumedata,
             _id: id
         };
