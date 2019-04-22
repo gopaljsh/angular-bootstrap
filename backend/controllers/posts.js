@@ -61,10 +61,7 @@ exports.getSinglePost = (req, res, next) => {
 
 exports.editPost = (req, res, next) => {
   let imagePath = req.body.imagePath;
-  if (req.file) {
-    const url = req.protocol + '://' + req.get("host");
-    imagePath = url + "/images/" + req.file.filename
-  }
+
   const post = new Post({
     _id: req.body.id,
     title: req.body.title,
@@ -72,7 +69,7 @@ exports.editPost = (req, res, next) => {
     imagePath: imagePath,
     creator: req.userData.userId
   });
- Post.updateOne({ _id: req.params.id, creator: req.userData.userId }, post)
+ post.updateOne({ _id: req.params.id, creator: req.userData.userId }, post)
   .then((result) => {
     if (result.n > 0) {
       res.status(200).json({

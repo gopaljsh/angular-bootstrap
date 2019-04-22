@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 import { Resume } from './resume.model';
 
@@ -8,7 +9,7 @@ import { Resume } from './resume.model';
 })
 export class ResumeService {
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private router: Router) {}
 
     getResume() {
         return this.http.get<{resume: Resume[]}>('http://localhost:3000/api/resume');
@@ -20,7 +21,18 @@ export class ResumeService {
         };
         this.http.post('http://localhost:3000/api/resume/post', resumeData)
             .subscribe((res) => {
-                console.log(res);
+                this.router.navigate(['/resume']);
+            });
+    }
+
+    updateResume(resumedata: string, id: string) {
+        const updateResume = {
+            resumedata: resumedata,
+            _id: id
+        };
+        this.http.put('http://localhost:3000/api/resume/post/' + id, updateResume)
+            .subscribe(res => {
+                this.router.navigate(['/resume']);
             });
     }
 }

@@ -14,7 +14,7 @@ router.get('' , postController.getPosts);
 
 router.get('/:id', postController.getSinglePost);
 
-router.put('/:id', checkAuth, multerFile, postController.editPost);
+router.put('/:id', checkAuth, postController.editPost);
 
 router.delete('/:id', checkAuth, postController.deletePost);
 
