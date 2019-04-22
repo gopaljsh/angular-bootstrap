@@ -69,7 +69,8 @@ exports.editPost = (req, res, next) => {
     imagePath: imagePath,
     creator: req.userData.userId
   });
- post.updateOne({ _id: req.params.id, creator: req.userData.userId }, post)
+
+  Post.updateOne({ _id: req.params.id, creator: req.userData.userId }, post)
   .then((result) => {
     if (result.n > 0) {
       res.status(200).json({
@@ -80,7 +81,7 @@ exports.editPost = (req, res, next) => {
         message: "You are not allowed!"
       });
     }
-  })
+  });
 };
 
 exports.deletePost = (req, res, next) => {
@@ -96,8 +97,7 @@ exports.deletePost = (req, res, next) => {
           message: "You are not allowed!"
         });
       }
-
-    })
+  })
 };
 
 

@@ -20,20 +20,30 @@ router.post('/resume/post', (req, res, next) => {
 });
 
 router.put('/resume/post/:id', (req, res, next) => {
+
     const resume = new Resume({
-        resumedata: req.body.resumedata,
-        _id: req.body.id,
+        _id: req.body._id,
+        resumedata: req.body.resumedata
     });
-    resume.updateOne({_id: req.params.id}, resume)
+
+    Resume.updateOne({_id: req.params.id}, resume)
         .then(resData => {
-            console.log(resData)
+          if (resData.n > 0) {
+            res.status(200).json({
+              message: 'Resume updated Successfully'
+            });
+          } else {
+            res.status(401).json({
+              message: 'You are not allowed to update resume'
+            });
+          }
         });
 });
 
 router.get('/resume', (req, res, next) => {
     Resume.find().then(resume => {
         res.status(200).json({
-            resume: resume 
+            resume: resume
         });
     });
 });
