@@ -22,8 +22,8 @@ router.post('/resume/post', (req, res, next) => {
 router.put('/resume/post/:id', (req, res, next) => {
 
     const resume = new Resume({
-        _id: req.body._id,
-        resumedata: req.body.resumedata
+      _id: req.body._id,
+      resumedata: req.body.resumedata
     });
 
     Resume.updateOne({_id: req.params.id}, resume)
