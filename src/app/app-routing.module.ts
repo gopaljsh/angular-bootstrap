@@ -17,7 +17,8 @@ const routes: Routes = [
   {path: 'resume', component: ResumeComponent},
   {path: 'resume/create', component: ResumeCreateComponent},
   {path: 'contact', component: ContactComponent},
-  {path: 'create', component: PostCreateComponent, canActivate: [AuthGuard]},
+  //{path: 'create', component: PostCreateComponent, canActivate: [AuthGuard]},
+  {path: 'create', component: PostCreateComponent},
   {path: 'edit/:postId', component: PostCreateComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignUpComponent}

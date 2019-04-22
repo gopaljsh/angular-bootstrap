@@ -53,11 +53,12 @@ export class PostServiceComponent {
       (BACKEND_URL + id);
   }
 
-  addPost(title: string, content: string, image: File) {
-    const postData = new FormData();
-    postData.append('title', title);
-    postData.append('content', content);
-    postData.append('image', image, title);
+  addPost(title: string, content: string, image: string) {
+    const postData = {
+      'title': title,
+      'content': content,
+      'imagePath': image
+    }
     this.http.post<{message: string, post: Post}>(BACKEND_URL, postData)
       .subscribe((response) => {
         this.router.navigate(['/']);

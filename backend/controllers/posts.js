@@ -3,11 +3,11 @@
 const Post = require('../models/post');
 
 exports.createPost = (req, res, next) => {
-  const url = req.protocol + '://' + req.get("host");
+
   const post = new Post({
     title: req.body.title,
     content: req.body.content,
-    imagePath: url + "/images/" + req.file.filename,
+    imagePath: req.body.imagePath,
     creator: req.userData.userId
   });
 

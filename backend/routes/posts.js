@@ -8,7 +8,7 @@ const multerFile = require('../middleware/multer');
 const router = express.Router();
 
 
-router.post('' , checkAuth, multerFile, postController.createPost);
+router.post('' , checkAuth, postController.createPost);
 
 router.get('' , postController.getPosts);
 
