@@ -14,10 +14,12 @@ import { Subscription } from 'rxjs';
 export class ResumeCreateComponent implements OnInit, OnDestroy {
     mycontent = '<p>This is the ckeditor content first text</p>';
     id: string;
-    ckeConfig;
     private resumeSub: Subscription;
+    @ViewChild('myckeditor') myCKeditor: CKEditorComponent;
 
-    constructor(private resumeService: ResumeService) {}
+    constructor(private resumeService: ResumeService) {
+
+    }
 
     ngOnInit() {
         this.resumeSub = this.resumeService.getResume()
@@ -29,7 +31,7 @@ export class ResumeCreateComponent implements OnInit, OnDestroy {
                     this.id = resumeContent.resume[0]._id;
                 }
             });
-        this.ckeConfig = {
+        this.myCKeditor.config = {
             height: 300,
             toolbarGroups: [
                 { name: 'document', groups: [ 'mode'] },
@@ -44,7 +46,8 @@ export class ResumeCreateComponent implements OnInit, OnDestroy {
                 { name: 'tools' },
                 { name: 'others' },
                 { name: 'about' }
-            ]
+            ],
+            extraPlugins: 'divarea'
           };
     }
 
