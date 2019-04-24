@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { ResumeService } from './resume.service';
 
 import { Resume } from './resume.model';
@@ -6,7 +6,9 @@ import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-resume',
-    templateUrl: './resume.component.html'
+    templateUrl: './resume.component.html',
+    styleUrls: ['./resume.component.css'],
+    encapsulation: ViewEncapsulation.None
 })
 export class ResumeComponent implements OnInit, OnDestroy {
     displayResume: string;

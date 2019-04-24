@@ -1,7 +1,7 @@
 .content-wrapper {
   padding: 50px;
   margin-left: 400px;
-  background: #f4f4f4;
+  background: #fff;
   min-height: 100vh;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .personal-info .user-post {
-  color:white;  
+  color:white;
 }
 
 .user-social-media {
