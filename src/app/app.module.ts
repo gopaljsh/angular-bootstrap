@@ -23,6 +23,7 @@ import { AboutComponent } from './about/about.component';
 import { ResumeComponent } from './resume/resume.component';
 import { ContactComponent } from './contact/contact.component';
 import { ResumeCreateComponent } from './resume/resume-create/resume-create.component';
+import { postSingleComponent } from './post/post-single/post-single.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ResumeCreateComponent } from './resume/resume-create/resume-create.comp
     AboutComponent,
     ResumeComponent,
     ContactComponent,
-    ResumeCreateComponent
+    ResumeCreateComponent,
+    postSingleComponent
   ],
   imports: [
     BrowserModule,

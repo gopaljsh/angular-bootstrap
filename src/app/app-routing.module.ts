@@ -10,6 +10,7 @@ import { AboutComponent } from './about/about.component';
 import { ResumeComponent } from './resume/resume.component';
 import { ContactComponent } from './contact/contact.component';
 import { ResumeCreateComponent } from './resume/resume-create/resume-create.component';
+import { postSingleComponent } from './post/post-single/post-single.component';
 
 const routes: Routes = [
   {path: '', component: AboutComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   //{path: 'create', component: PostCreateComponent, canActivate: [AuthGuard]},
   {path: 'create', component: PostCreateComponent},
   {path: 'edit/:postId', component: PostCreateComponent, canActivate: [AuthGuard]},
+  {path: 'post/:postId', component: postSingleComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignUpComponent}
 ];
