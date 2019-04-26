@@ -1,1 +1,17 @@
-<h1>Single post</h1>
+<span class="spinner" *ngIf="isLoading"><img src="../assets/images/35.gif" /></span>
+<div class="container">
+  <div class="row" *ngIf="post && !isLoading">
+    <div class="col-sm-12">
+      <div class="post-display">
+        <img [src]="post.imagePath" alt="" >
+        <div class="post-title">
+            {{ post.title }}
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="post-content" [innerHTML]="post.content">
+      </div>
+    </div>
+  </div>
+</div>

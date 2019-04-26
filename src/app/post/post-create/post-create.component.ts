@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { CKEditorComponent } from 'ng2-ckeditor';
 
 import { Post } from '../post.model';
 import { PostServiceComponent } from '../post.service';
@@ -10,13 +11,14 @@ import { PostServiceComponent } from '../post.service';
   templateUrl: './post-create.component.html',
   styleUrls: ['./post-create.component.css']
 })
-export class PostCreateComponent implements OnInit {
+export class PostCreateComponent implements OnInit, AfterViewInit {
   private mode = 'create';
   private postId: string;
   post: Post;
   isLoading = false;
   form: FormGroup;
   imagePreview: string;
+  @ViewChild('myckeditor') myCKeditor: CKEditorComponent;
 
   constructor(public postService: PostServiceComponent, public route: ActivatedRoute) { }
 
@@ -24,7 +26,7 @@ export class PostCreateComponent implements OnInit {
     this.form = new FormGroup({
       'title': new FormControl(null, {validators: [Validators.required, Validators.minLength(3)]}),
       'content': new FormControl(null, {validators: [Validators.required]}),
-      'image': new FormControl(null, {validators: [Validators.required]})
+      'image': new FormControl(null, {validators: [Validators.required]}),
     });
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('postId')) {
@@ -53,6 +55,28 @@ export class PostCreateComponent implements OnInit {
         this.postId = null;
       }
     });
+
+  }
+
+  ngAfterViewInit() {
+    this.myCKeditor.config = {
+      height: 300,
+      toolbarGroups: [
+          { name: 'document', groups: [ 'mode'] },
+          '/',
+          { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+          { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+          { name: 'links' },
+          { name: 'insert' },
+          '/',
+          { name: 'styles' },
+          { name: 'colors' },
+          { name: 'tools' },
+          { name: 'others' },
+          { name: 'about' }
+      ],
+      extraPlugins: 'divarea'
+    };
   }
 
   // onImagePicked(event: Event) {

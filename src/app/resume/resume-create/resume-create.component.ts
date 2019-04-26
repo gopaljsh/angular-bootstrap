@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { CKEditorComponent } from 'ng2-ckeditor';
 import { ResumeService } from '../resume.service';
 
