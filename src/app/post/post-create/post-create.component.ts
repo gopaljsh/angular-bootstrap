@@ -18,6 +18,7 @@ export class PostCreateComponent implements OnInit, AfterViewInit {
   isLoading = false;
   form: FormGroup;
   imagePreview: string;
+  config;
   @ViewChild('myckeditor') myCKeditor: CKEditorComponent;
 
   constructor(public postService: PostServiceComponent, public route: ActivatedRoute) { }
@@ -56,11 +57,8 @@ export class PostCreateComponent implements OnInit, AfterViewInit {
       }
     });
 
-  }
-
-  ngAfterViewInit() {
-    this.myCKeditor.config = {
-      height: 300,
+    this.config = {
+      height: 200,
       toolbarGroups: [
           { name: 'document', groups: [ 'mode'] },
           '/',
@@ -78,6 +76,29 @@ export class PostCreateComponent implements OnInit, AfterViewInit {
       extraPlugins: 'divarea'
     };
   }
+
+  ngAfterViewInit() {
+    // if (this.myCKeditor) {
+    //   this.myCKeditor.config = {
+    //     height: 1000,
+    //     toolbarGroups: [
+    //         { name: 'document', groups: [ 'mode'] },
+    //         '/',
+    //         { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+    //         { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+    //         { name: 'links' },
+    //         { name: 'insert' },
+    //         '/',
+    //         { name: 'styles' },
+    //         { name: 'colors' },
+    //         { name: 'tools' },
+    //         { name: 'others' },
+    //         { name: 'about' }
+    //     ],
+    //     extraPlugins: 'divarea'
+    //   };
+    // }
+ }
 
   // onImagePicked(event: Event) {
   //   const file = (event.target as HTMLInputElement).files[0];

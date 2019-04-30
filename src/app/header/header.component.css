@@ -26,6 +26,10 @@
     font-size: 13px;
 }
 
+.main-nav ul li a.active { 
+    color: black;
+}
+
 .main-nav ul li a:hover { 
     color: #515050;
     text-decoration: none;

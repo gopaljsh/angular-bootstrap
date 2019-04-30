@@ -9,6 +9,7 @@
               <p class="card-text"><input type="text" class="form-control" formControlName="title" placeholder="Post title" /></p>
               <p class="card-text"><ckeditor formControlName="content"
                 #myckeditor
+                [config]='config'
                 debounce="500"
                 >
       </ckeditor></p>
