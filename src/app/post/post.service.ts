@@ -58,6 +58,7 @@ export class PostServiceComponent {
       'content': content,
       'imagePath': image
     };
+
     this.http.post<{message: string, post: Post}>(BACKEND_URL, postData)
       .subscribe((response) => {
         this.router.navigate(['/']);

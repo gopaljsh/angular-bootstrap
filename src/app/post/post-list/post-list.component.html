@@ -1,11 +1,8 @@
-<!-- <div class="jumbotron jumbotron-fluid banner">
-  <div class="container">
-    <h1 class="display-4">Technical World !</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-  </div>
-</div> -->
 <span class="spinner" *ngIf="isLoading"><img src="../assets/images/35.gif" /></span>
 <div class="container" *ngIf="posts.length > 0 && !isLoading">
+  <div class="row" *ngIf="userIsAuthenticated">
+    <div class="col-sm-12 text-right"><button class="btn btn-success" routerLink="/create"><i class="fas fa-plus"></i> Add blog</button></div>
+  </div>
   <div class="row">
     <div class="col-sm-4 mt-3" *ngFor="let post of posts">
       <div class="card">

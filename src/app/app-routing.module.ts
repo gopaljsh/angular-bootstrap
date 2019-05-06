@@ -16,13 +16,13 @@ const routes: Routes = [
   {path: '', component: AboutComponent},
   {path: 'blog', component: PostListComponent},
   {path: 'resume', component: ResumeComponent},
-  {path: 'resume/create', component: ResumeCreateComponent},
+  {path: 'resume/create', component: ResumeCreateComponent, canActivate: [AuthGuard]},
   {path: 'contact', component: ContactComponent},
-  {path: 'create', component: PostCreateComponent},
+  {path: 'create', component: PostCreateComponent, canActivate: [AuthGuard]},
   {path: 'edit/:postId', component: PostCreateComponent, canActivate: [AuthGuard]},
   {path: 'post/:singleId', component: PostSingleComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'signup', component: SignUpComponent}
+  {path: 'signup', component: SignUpComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

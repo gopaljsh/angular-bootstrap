@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { CKEditorComponent } from 'ng2-ckeditor';
@@ -11,7 +11,7 @@ import { PostServiceComponent } from '../post.service';
   templateUrl: './post-create.component.html',
   styleUrls: ['./post-create.component.css']
 })
-export class PostCreateComponent implements OnInit, AfterViewInit {
+export class PostCreateComponent implements OnInit {
   private mode = 'create';
   private postId: string;
   post: Post;
@@ -77,52 +77,11 @@ export class PostCreateComponent implements OnInit, AfterViewInit {
     };
   }
 
-  ngAfterViewInit() {
-    // if (this.myCKeditor) {
-    //   this.myCKeditor.config = {
-    //     height: 1000,
-    //     toolbarGroups: [
-    //         { name: 'document', groups: [ 'mode'] },
-    //         '/',
-    //         { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-    //         { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
-    //         { name: 'links' },
-    //         { name: 'insert' },
-    //         '/',
-    //         { name: 'styles' },
-    //         { name: 'colors' },
-    //         { name: 'tools' },
-    //         { name: 'others' },
-    //         { name: 'about' }
-    //     ],
-    //     extraPlugins: 'divarea'
-    //   };
-    // }
- }
-
-  // onImagePicked(event: Event) {
-  //   const file = (event.target as HTMLInputElement).files[0];
-  //   this.form.patchValue({
-  //     'image': file
-  //   });
-  //   this.form.get('image').updateValueAndValidity();
-  //   const reader = new FileReader();
-  //   reader.onload = () => {
-  //     this.imagePreview = reader.result as string;
-  //   };
-  //   reader.readAsDataURL(file);
-  // }
-
   onAddPost() {
     this.isLoading = true;
     if (this.form.invalid) {
       return;
     }
-    // const post: Post = {
-    //   id: null,
-    //   title: this.form.value.title,
-    //   content: this.form.value.content
-    // };
 
     if (this.mode === 'create') {
       this.postService.addPost(this.form.value.title, this.form.value.content, this.form.value.image);

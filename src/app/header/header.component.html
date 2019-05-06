@@ -45,5 +45,13 @@
         Contact
       </a>
     </li>
+    <li *ngIf="userisAuthenticated">
+      <a (click)="onLogout()">
+        <span class="nav-icon">
+          <i class="fas fa-sign-out-alt"></i>
+        </span>
+        Logout
+      </a>
+    </li>
   </ul>
 </div>

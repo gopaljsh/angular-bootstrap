@@ -24,6 +24,7 @@
     text-align: center;
     color: #93989c;
     font-size: 13px;
+    cursor: pointer;
 }
 
 .main-nav ul li a.active { 
