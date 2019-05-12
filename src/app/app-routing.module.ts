@@ -11,6 +11,7 @@ import { ResumeComponent } from './resume/resume.component';
 import { ContactComponent } from './contact/contact.component';
 import { ResumeCreateComponent } from './resume/resume-create/resume-create.component';
 import { PostSingleComponent } from './post/post-single/post-single.component';
+import { PageNotFoundComponent } from './pagenotfound/page-not-found.component';
 
 const routes: Routes = [
   {path: '', component: AboutComponent},
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'edit/:postId', component: PostCreateComponent, canActivate: [AuthGuard]},
   {path: 'post/:singleId', component: PostSingleComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'signup', component: SignUpComponent, canActivate: [AuthGuard]}
+  {path: 'signup', component: SignUpComponent, canActivate: [AuthGuard]},
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({

@@ -24,6 +24,7 @@ import { ResumeComponent } from './resume/resume.component';
 import { ContactComponent } from './contact/contact.component';
 import { ResumeCreateComponent } from './resume/resume-create/resume-create.component';
 import { PostSingleComponent } from './post/post-single/post-single.component';
+import { PageNotFoundComponent } from './pagenotfound/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PostSingleComponent } from './post/post-single/post-single.component';
     ResumeComponent,
     ContactComponent,
     ResumeCreateComponent,
-    PostSingleComponent
+    PostSingleComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
