@@ -5,7 +5,7 @@
 </p>
 
 <p>
-    My journey as a UI/UX designer started after graduation for Digital communication, design and media.This has helped me to widen my range of knowledge and gather experiences through various disciplines, such as front-end development, HTML development, javascript, HTML-javascript animations and many more. Fast forward few years, I’m now focusing on font-end development using angular, node, express, javascript, jquery, typescript, html, css and sass. I also do UI/UX design for web and mobile application.  
+    My journey as a UI/UX designer started after graduation for Digital communication, design and media.This has helped me to widen my range of knowledge and gather experiences through various disciplines, such as front-end development, HTML development, javascript, HTML-javascript animations and many more. Fast forward few years, I’m now focusing on font-end development using angular, node, express, javascript, jquery, typescript, html, css and sass. I also do UI/UX design for web and mobile application.
 </p>
 
 <p>
@@ -20,37 +20,12 @@
     <div class="col-sm-12">
         <h4>Experience summary</h4>
         <hr>
-        <ul>
-            <li>
-                5+ years of experience working in a corporate environment as a front-end UI/Web developer. Strong technical skills in complex web application development including web-based applications.
-            </li>
-            <li>
-                Experience developing highly interactive web applications utilizing JavaScript, HTML5, CSS, JSON, Angular JS 1.5 & 4, and Bootstrap. 
-            </li>
-            <li>
-                Extensive experience in UI web applications using HTML5, CSS3, JavaScript, jQuery, JSON, Twitter Bootstrap, Angular JS. 
-            </li>
-            <li>
-                Good Experience in developing the Single Page Applications using AngularJS.
-            </li>
-            <li>
-                Experience on working with Custom Directives, Controllers, Services, filters modules of AngularJS.
-            </li>
-            <li>
-                Experienced in designing wireframes, prototypes in Invision tool, information architecture, navigation, visual elements and interface based on usability principles.
-            </li>
-            <li>
-                Worked in various version control systems – SVN and GIT.
-            </li>
-            <li>
-                Worked extensively in Agile Development process.
-            </li>
-            <li>
-                Also have onsite experience of Oman and Sweden.
-            </li>
-            <li>
-                Have created demo project in angular4, for auth, login and database have used google firebase database service, it is just recipe and shopping list demo application. I have created individual module, route and service just to increase performance of app. Please have look at give below link for source files.
-            </li>
-        </ul>
+        <div *ngFor="let exp of experienceSummary;let i = index">
+        <div class="card fadeInDown" [ngStyle]="{'animation-delay': (i / 2) + 's'}">
+          <div class="card-body">
+            {{ exp }}
+          </div>
+        </div>
+      </div>
     </div>
 </div>
