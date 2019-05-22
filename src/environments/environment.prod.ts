@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://node-angular-bootstrap.herokuapp.com/api'
+  apiUrl: 'http://gopal-joshi.herokuapp.com/api'
 };
