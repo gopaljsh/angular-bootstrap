@@ -21,7 +21,7 @@
         <h4>Experience summary</h4>
         <hr>
         <div *ngFor="let exp of experienceSummary;let i = index">
-        <div class="card fadeInDown" [ngStyle]="{'animation-delay': (i / 2) + 's'}">
+        <div class="card fadeInDown" [style.animation-delay.s]="(i / 2)">
           <div class="card-body">
             {{ exp }}
           </div>
