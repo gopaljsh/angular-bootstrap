@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { AuthServiceComponent } from '../auth/auth.service';
 import { Subscription } from 'rxjs';
 
@@ -10,6 +10,8 @@ import { Subscription } from 'rxjs';
 export class HeaderComponent implements OnInit, OnDestroy {
   userisAuthenticated = false;
   private userAuthSubscription: Subscription;
+  isOpen = false;
+  @Output() openMenu: EventEmitter<any> = new EventEmitter();
 
   constructor(private authService: AuthServiceComponent) {}
 
@@ -23,6 +25,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onLogout() {
     this.authService.logoutUser();
+  }
+
+  openMenuEmit() {
+    //this.isOpen = !this.isOpen;
+    this.openMenu.emit(true);
   }
 
   ngOnDestroy() {

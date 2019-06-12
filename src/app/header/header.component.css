@@ -7,6 +7,7 @@
     height: 100vh;
     box-shadow: -4px 0 3px rgba(0,0,0,0.5);
     z-index: 1;
+    transition: all 0.3s ease;
 }
 
 .main-nav ul {
@@ -17,6 +18,10 @@
 .main-nav ul li {
     display: block;
     margin-bottom: 30px;
+}
+
+.main-nav ul li:last-child {
+    display: none;
 }
 
 .main-nav ul li a { 
@@ -40,4 +45,27 @@
     display: block;
     font-size: 25px;
 
+}
+
+@media screen and (max-width:768px) {
+    .main-nav {
+        left: 0;
+        width: 100%;
+        top: 0;
+        height: auto;
+    }
+    .main-nav > ul {
+        padding: 10px 0;
+        margin-bottom: 0;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+    }
+    .main-nav > ul > li { 
+        margin-bottom: 0;
+    }
+
+    .main-nav > ul > li:last-child { 
+        display: block;
+    } 
 }
