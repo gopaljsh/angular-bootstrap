@@ -28,8 +28,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   openMenuEmit() {
-    //this.isOpen = !this.isOpen;
-    this.openMenu.emit(true);
+    this.isOpen = !this.isOpen;
+    this.openMenu.emit(this.isOpen);
   }
 
   ngOnDestroy() {

@@ -1,7 +1,5 @@
-import { Component, OnInit, HostListener, Input, OnChanges } from '@angular/core';
-import { fromEvent } from "rxjs";
-import { Observable } from "rxjs";
-import { Subscription } from "rxjs";
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { fromEvent, Observable, Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-profile',
@@ -11,17 +9,17 @@ import { Subscription } from "rxjs";
 export class ProfileComponent implements OnInit, OnChanges {
     resizeObservable$: Observable<Event>;
     resizeSubscription$: Subscription;
-    private mobile: boolean = true;
+    private mobile = true;
     @Input() listenMenu: boolean;
-    
+
     ngOnInit() {
-        if(window.innerWidth < 768) {
+        if (window.innerWidth < 768) {
             this.mobile = false;
         }
-        this.resizeObservable$ = fromEvent(window, 'resize')
+        this.resizeObservable$ = fromEvent(window, 'resize');
         this.resizeSubscription$ = this.resizeObservable$.subscribe( evt => {
-            if(evt) {
-                if(window.innerWidth < 768) {
+            if (evt) {
+                if (window.innerWidth < 768 && !this.listenMenu) {
                     this.mobile = false;
                 } else {
                     this.mobile = true;
@@ -31,11 +29,9 @@ export class ProfileComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges() {
-        if(this.listenMenu) {
-            this.mobile = this.listenMenu;
-        console.log(this.listenMenu);
-        }
-        
+      if (this.listenMenu !== undefined) {
+        this.mobile = this.listenMenu;
+      }
     }
 
 }
