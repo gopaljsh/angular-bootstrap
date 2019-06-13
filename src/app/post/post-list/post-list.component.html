@@ -10,7 +10,7 @@
         <div class="card-body">
           <h5 class="card-title">{{ post.title }}</h5>
           <!-- <p class="card-text" [innerHtml]="post.content">{{ post.content | slice:0:90 }} <span *ngIf="post.content.length > 30">...</span></p> -->
-          <p class="card-text" [innerHtml]="post.content"></p>
+          <p class="card-text" [innerHtml]="post.content | slice:0:60"></p>
           <a [routerLink]="['/post', post.id]">Read more</a>
           <a class="btn btn-primary" [routerLink]="['/edit', post.id]" *ngIf="userIsAuthenticated && userId === post.creator">Edit</a>&nbsp;
           <button class="btn btn-danger" (click)="onDelete(post.id)" *ngIf="userIsAuthenticated && userId === post.creator">Delete</button>
