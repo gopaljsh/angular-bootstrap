@@ -24,7 +24,7 @@
     display: none;
 }
 
-.main-nav ul li a { 
+.main-nav ul li a {
     display: block;
     text-align: center;
     color: #93989c;
@@ -32,11 +32,11 @@
     cursor: pointer;
 }
 
-.main-nav ul li a.active { 
+.main-nav ul li a.active {
     color: black;
 }
 
-.main-nav ul li a:hover { 
+.main-nav ul li a:hover {
     color: #515050;
     text-decoration: none;
 }
@@ -51,8 +51,9 @@
     .main-nav {
         left: 0;
         width: 100%;
-        top: 0;
+        top: auto;
         height: auto;
+        bottom: 0;
     }
     .main-nav > ul {
         padding: 10px 0;
@@ -61,11 +62,11 @@
         flex-flow: row nowrap;
         justify-content: space-around;
     }
-    .main-nav > ul > li { 
+    .main-nav > ul > li {
         margin-bottom: 0;
     }
 
-    .main-nav > ul > li:last-child { 
+    .main-nav > ul > li:last-child {
         display: block;
-    } 
+    }
 }
