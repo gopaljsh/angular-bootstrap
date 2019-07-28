@@ -132,4 +132,13 @@
     .sidebar-left{
       z-index: 1;
     }
+    .profile-img {
+      height: 126px;
+      background: black;
+    }
+    .profile-img > img {
+      width: 70%;
+      position: relative;
+      left: 81px;
+    }
   }
