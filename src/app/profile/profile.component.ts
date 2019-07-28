@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, OnDestroy } from '@angular/core';
 import { fromEvent, Observable, Subscription } from 'rxjs';
 
 @Component({
@@ -6,7 +6,7 @@ import { fromEvent, Observable, Subscription } from 'rxjs';
     templateUrl: './profile.component.html',
     styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit, OnChanges {
+export class ProfileComponent implements OnInit, OnChanges, OnDestroy {
     resizeObservable$: Observable<Event>;
     resizeSubscription$: Subscription;
     private mobile = true;
@@ -32,6 +32,10 @@ export class ProfileComponent implements OnInit, OnChanges {
       if (this.listenMenu !== undefined) {
         this.mobile = this.listenMenu;
       }
+    }
+
+    ngOnDestroy() {
+        this.resizeSubscription$.unsubscribe();
     }
 
 }
