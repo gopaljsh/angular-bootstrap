@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { CKEditorComponent } from 'ng2-ckeditor';
 import { ResumeService } from '../resume.service';
 
 import { Resume } from '../resume.model';
@@ -15,7 +14,7 @@ export class ResumeCreateComponent implements OnInit, OnDestroy {
     mycontent = '<p>This is the ckeditor content first text</p>';
     id: string;
     private resumeSub: Subscription;
-    @ViewChild('myckeditor') myCKeditor: CKEditorComponent;
+    @ViewChild('myckeditor') myCKeditor;
 
     constructor(private resumeService: ResumeService) {
 

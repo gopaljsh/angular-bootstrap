@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { CKEditorComponent } from 'ng2-ckeditor';
 
 import { Post } from '../post.model';
 import { PostServiceComponent } from '../post.service';
@@ -19,7 +18,7 @@ export class PostCreateComponent implements OnInit {
   form: FormGroup;
   imagePreview: string;
   config;
-  @ViewChild('myckeditor') myCKeditor: CKEditorComponent;
+  @ViewChild('myckeditor') myCKeditor;
 
   constructor(public postService: PostServiceComponent, public route: ActivatedRoute) { }
 
