@@ -11,6 +11,9 @@
   .profile-img {
     overflow: hidden;
   }
+  .profile-img > img {
+    width: 100%;
+  }
   .user-info{
     display: block;
     padding: 10px 23px;
