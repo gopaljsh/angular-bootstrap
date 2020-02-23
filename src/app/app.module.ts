@@ -26,6 +26,8 @@ import { ResumeCreateComponent } from './resume/resume-create/resume-create.comp
 import { PostSingleComponent } from './post/post-single/post-single.component';
 import { PageNotFoundComponent } from './pagenotfound/page-not-found.component';
 import { ProfileComponent } from './profile/profile.component';
+import { QuizComponent } from './quiz/quiz.component';
+import { QuizTestComponent } from './quiz/quiz-test/quiz-test.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { ProfileComponent } from './profile/profile.component';
     ResumeCreateComponent,
     PostSingleComponent,
     PageNotFoundComponent,
-    ProfileComponent
+    ProfileComponent,
+    QuizComponent,
+    QuizTestComponent
   ],
   imports: [
     BrowserModule,

@@ -12,6 +12,8 @@ import { ContactComponent } from './contact/contact.component';
 import { ResumeCreateComponent } from './resume/resume-create/resume-create.component';
 import { PostSingleComponent } from './post/post-single/post-single.component';
 import { PageNotFoundComponent } from './pagenotfound/page-not-found.component';
+import { QuizComponent } from './quiz/quiz.component';
+import { QuizTestComponent } from './quiz/quiz-test/quiz-test.component';
 
 const routes: Routes = [
   {path: '', component: AboutComponent},
@@ -24,6 +26,8 @@ const routes: Routes = [
   {path: 'post/:singleId', component: PostSingleComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignUpComponent, canActivate: [AuthGuard]},
+  {path: 'quiz', component: QuizComponent},
+  {path: 'quiz/:Id', component: QuizTestComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

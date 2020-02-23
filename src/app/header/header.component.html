@@ -45,6 +45,14 @@
         Contact
       </a>
     </li>
+    <li>
+      <a routerLink='/quiz' routerLinkActive="active">
+        <span class="nav-icon">
+            <i class="fas fa-question"></i>
+        </span>
+        Quiz
+      </a>
+    </li>
     <li *ngIf="userisAuthenticated">
       <a (click)="onLogout()">
         <span class="nav-icon">

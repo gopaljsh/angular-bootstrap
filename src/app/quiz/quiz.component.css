@@ -1,0 +1,20 @@
+.quiz-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.quiz-menu li {
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.quiz-menu li a {
+    padding: 15px 40px;
+    display: flex;
+    background: #e6e7e7;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    color: grey;
+}
