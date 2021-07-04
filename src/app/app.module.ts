@@ -23,6 +23,12 @@ import { AboutComponent } from './about/about.component';
 import { ResumeComponent } from './resume/resume.component';
 import { ContactComponent } from './contact/contact.component';
 import { ResumeCreateComponent } from './resume/resume-create/resume-create.component';
+import { PostSingleComponent } from './post/post-single/post-single.component';
+import { PageNotFoundComponent } from './pagenotfound/page-not-found.component';
+import { ProfileComponent } from './profile/profile.component';
+import { QuizComponent } from './quiz/quiz.component';
+import { QuizTestComponent } from './quiz/quiz-test/quiz-test.component';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +39,12 @@ import { ResumeCreateComponent } from './resume/resume-create/resume-create.comp
     AboutComponent,
     ResumeComponent,
     ContactComponent,
-    ResumeCreateComponent
+    ResumeCreateComponent,
+    PostSingleComponent,
+    PageNotFoundComponent,
+    ProfileComponent,
+    QuizComponent,
+    QuizTestComponent
   ],
   imports: [
     BrowserModule,

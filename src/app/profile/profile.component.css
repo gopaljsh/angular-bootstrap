@@ -1,0 +1,147 @@
+/* sidebar css start */
+.sidebar-left{
+    width: 300px;
+    background:#f0262a;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+  }
+
+  .profile-img {
+    overflow: hidden;
+  }
+  .profile-img > img {
+    width: 100%;
+  }
+  .user-info{
+    display: block;
+    padding: 10px 23px;
+  }
+
+  .personal-info {
+    display: block;
+  }
+
+  .personal-info .user-name {
+    display: block;
+    color:white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+  }
+
+  .personal-info .user-post {
+    color:white;
+  }
+
+  .user-social-media {
+    display: block;
+    margin-top: 10px;
+  }
+  .user-social-media ul {
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .user-social-media ul li {
+    display: inline-block;
+  }
+
+  .user-social-media ul li a {
+    color: white;
+    display: block;
+    margin-right: 10px;
+    font-size: 24px;
+  }
+
+  .contact-info {
+    display: block;
+  }
+
+  .contact-info ul {
+    display: block;
+    padding: 0;
+    list-style-type: none;
+  }
+  .contact-info ul li {
+    color: white;
+    margin-bottom: 10px;
+  }
+  /* sidebar css ends */
+
+  @-webkit-keyframes slideOutLeft {
+    from {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      visibility: hidden;
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+  @keyframes slideOutLeft {
+    from {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      visibility: hidden;
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+  .slideOutLeft {
+    -webkit-animation-name: slideOutLeft;
+    animation-name: slideOutLeft;
+  }
+
+  .animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+
+  @-webkit-keyframes slideInLeft {
+    from {
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+      visibility: visible;
+    }
+    to {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  @keyframes slideInLeft {
+    from {
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+      visibility: visible;
+    }
+    to {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  .slideInLeft {
+    -webkit-animation-name: slideInLeft;
+    animation-name: slideInLeft;
+  }
+
+
+  @media screen and (max-width:768px) {
+    .sidebar-left{
+      z-index: 1;
+    }
+    .profile-img {
+      height: 126px;
+      background: black;
+    }
+    .profile-img > img {
+      width: 70%;
+      position: relative;
+      left: 81px;
+    }
+  }

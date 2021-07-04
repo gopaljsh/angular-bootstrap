@@ -1,21 +1,36 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
-import { CKEditorComponent } from 'ng2-ckeditor';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ResumeService } from '../resume.service';
+
+import { Resume } from '../resume.model';
+import { Subscription } from 'rxjs';
 
 
 @Component({
     selector: 'app-resume-create',
     templateUrl: './resume-create.component.html'
 })
-export class ResumeCreateComponent implements OnInit {
+export class ResumeCreateComponent implements OnInit, OnDestroy {
     mycontent = '<p>This is the ckeditor content first text</p>';
-    ckeConfig;
+    id: string;
+    private resumeSub: Subscription;
+    @ViewChild('myckeditor') myCKeditor;
 
-    constructor(private resumeService: ResumeService) {}
+    constructor(private resumeService: ResumeService) {
+
+    }
 
     ngOnInit() {
-        this.ckeConfig = {
+        this.resumeSub = this.resumeService.getResume()
+            .subscribe((resumeContent: {resume: Resume[]}) => {
+                if (!resumeContent.resume) {
+                    this.id = null;
+                } else {
+                    this.mycontent = resumeContent.resume[0].resumedata;
+                    this.id = resumeContent.resume[0]._id;
+                }
+            });
+        this.myCKeditor.config = {
             height: 300,
             toolbarGroups: [
                 { name: 'document', groups: [ 'mode'] },
@@ -30,14 +45,22 @@ export class ResumeCreateComponent implements OnInit {
                 { name: 'tools' },
                 { name: 'others' },
                 { name: 'about' }
-            ]
+            ],
+            extraPlugins: 'divarea'
           };
     }
 
     onSubmit(form: NgForm) {
-        console.log(form.value.myckeditor);
         if (form.invalid) { return; }
-        this.resumeService.postResume(form.value.myckeditor);
+        if (!this.id) {
+            this.resumeService.postResume(form.value.myckeditor);
+        } else {
+            this.resumeService.updateResume(form.value.myckeditor, this.id);
+        }
         form.reset();
+    }
+
+    ngOnDestroy() {
+        this.resumeSub.unsubscribe();
     }
 }

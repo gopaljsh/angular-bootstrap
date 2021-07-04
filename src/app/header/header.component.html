@@ -13,7 +13,8 @@
 <div class="main-nav">
   <ul>
     <li>
-      <a routerLink='/'>
+      <a routerLink='/' routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+        true}">
         <span class="nav-icon">
             <i class="fas fa-user-tie"></i>
         </span>
@@ -21,7 +22,7 @@
       </a>
     </li>
     <li>
-      <a routerLink='/blog'>
+      <a routerLink='/blog' routerLinkActive="active">
         <span class="nav-icon">
             <i class="fas fa-globe-asia"></i>
         </span>
@@ -29,7 +30,7 @@
       </a>
     </li>
     <li>
-      <a routerLink='/resume'>
+      <a routerLink='/resume' routerLinkActive="active">
         <span class="nav-icon">
           <i class="far fa-file"></i>
         </span>
@@ -37,11 +38,35 @@
       </a>
     </li>
     <li>
-      <a routerLink='/contact'>
+      <a routerLink='/contact' routerLinkActive="active">
         <span class="nav-icon">
             <i class="far fa-envelope"></i>
         </span>
         Contact
+      </a>
+    </li>
+    <li>
+      <a routerLink='/quiz' routerLinkActive="active">
+        <span class="nav-icon">
+            <i class="fas fa-question"></i>
+        </span>
+        Quiz
+      </a>
+    </li>
+    <li *ngIf="userisAuthenticated">
+      <a (click)="onLogout()">
+        <span class="nav-icon">
+          <i class="fas fa-sign-out-alt"></i>
+        </span>
+        Logout
+      </a>
+    </li>
+    <li>
+      <a (click)="openMenuEmit()">
+        <span class="nav-icon">
+          <i class="fas fa-bars"></i>
+        </span>
+        Menu
       </a>
     </li>
   </ul>

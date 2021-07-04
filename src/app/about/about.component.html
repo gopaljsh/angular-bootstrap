@@ -5,17 +5,27 @@
 </p>
 
 <p>
-    My journey as a UI/UX designer started after graduation for Digital communication, design and media.This has helped me to widen my range of knowledge and gather experiences through various disciplines, such as front-end development, HTML development, javascript, HTML-javascript animations and many more. Fast forward few years, I’m now focusing on font-end development using angular, node, express, javascript, jquery, typescript, html, css and sass. I also do UI/UX design for web and mobile application.  
+    My journey as a UI/UX designer started after graduation for Digital communication, design and media.This has helped me to widen my range of knowledge and gather experiences through various disciplines, such as front-end development, HTML development, javascript, HTML-javascript animations and many more. Fast forward few years, I’m now focusing on font-end development using angular, node, express, javascript, jquery, typescript, html, css and sass. I also do UI/UX design for web and mobile application.
 </p>
 
 <p>
     I have also done angular, node, express, mondodb and typescript certification from Udemy.
 </p>
-
-<p>
-    Current products on TemPlaza is updated to be most useful for users. Moreover, templates and applications can be downloaded free so that you can build your own website with no additional fee. However, joining us as Club Member will definitely entitle customer to utilize all resources and receive support from our staff, by HelpDesk, Forum, Ticket or Email. By all means, supporting service is what we mean to bring our expertise to serve our customers the best.
-</p>
-
 <p>
     My work is something I do with lot of honesty, appetite and commitment. Over the past years I had the opportunity to drive and do hands-on work for some amazing brands from all over the world. I also got opportunity to travel onsite and explore some countries like Oman and Sweden.
 </p>
+<p>&nbsp;</p>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4>Experience summary</h4>
+        <hr>
+        <div *ngFor="let exp of experienceSummary;let i = index">
+        <div class="card fadeInDown" [style.animation-delay.s]="(i / 2)">
+          <div class="card-body">
+            {{ exp }}
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

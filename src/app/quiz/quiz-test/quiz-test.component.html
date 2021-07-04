@@ -1,0 +1,40 @@
+<div class="cantainer">
+    <div class="row mb30">
+        <div class="col-sm-12">
+            <a routerLink="/quiz"><i class="fas fa-long-arrow-alt-left"></i> Back to quiz</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12" *ngIf="!congratulations">
+            <form action="" #quizform="ngForm" (ngSubmit)="onSubmit(quizform)">
+                <ng-container *ngFor="let quiz of javascript; let i = index">
+                    <div class="d-block mb20">
+                        <h4 [ngClass]="{'incorrect': quiz.incorrect}">{{i+1}}. {{quiz.question}}</h4>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="option1{{i}}" name="option{{i}}" value="{{quiz.answeroption.a}}" class="custom-control-input" ngModel required>
+                            <label class="custom-control-label" for="option1{{i}}">{{quiz.answeroption.a}}</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="option2{{i}}" name="option{{i}}" value="{{quiz.answeroption.b}}" class="custom-control-input" ngModel required>
+                            <label class="custom-control-label" for="option2{{i}}">{{quiz.answeroption.b}}</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="option3{{i}}" name="option{{i}}" value="{{quiz.answeroption.c}}" class="custom-control-input" ngModel required>
+                            <label class="custom-control-label" for="option3{{i}}">{{quiz.answeroption.c}}</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="option4{{i}}" name="option{{i}}" value="{{quiz.answeroption.d}}" class="custom-control-input" ngModel required>
+                            <label class="custom-control-label" for="option4{{i}}">{{quiz.answeroption.d}}</label>
+                        </div>
+                    </div>
+                </ng-container>
+                <div>
+                    <button type="submit" class="btn btn-primary" [disabled]="quizform.invalid">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12" *ngIf="congratulations">
+            <h3 class="text-center">Congratulation you have successfully clear the javascript test !!</h3>
+        </div>
+    </div>
+</div>

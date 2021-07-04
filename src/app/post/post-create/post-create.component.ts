@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -17,6 +17,8 @@ export class PostCreateComponent implements OnInit {
   isLoading = false;
   form: FormGroup;
   imagePreview: string;
+  config;
+  @ViewChild('myckeditor') myCKeditor;
 
   constructor(public postService: PostServiceComponent, public route: ActivatedRoute) { }
 
@@ -24,7 +26,7 @@ export class PostCreateComponent implements OnInit {
     this.form = new FormGroup({
       'title': new FormControl(null, {validators: [Validators.required, Validators.minLength(3)]}),
       'content': new FormControl(null, {validators: [Validators.required]}),
-      'image': new FormControl(null, {validators: [Validators.required]})
+      'image': new FormControl(null, {validators: [Validators.required]}),
     });
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('postId')) {
@@ -53,19 +55,25 @@ export class PostCreateComponent implements OnInit {
         this.postId = null;
       }
     });
-  }
 
-  onImagePicked(event: Event) {
-    const file = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({
-      'image': file
-    });
-    this.form.get('image').updateValueAndValidity();
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imagePreview = reader.result as string;
+    this.config = {
+      height: 200,
+      toolbarGroups: [
+          { name: 'document', groups: [ 'mode'] },
+          '/',
+          { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+          { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+          { name: 'links' },
+          { name: 'insert' },
+          '/',
+          { name: 'styles' },
+          { name: 'colors' },
+          { name: 'tools' },
+          { name: 'others' },
+          { name: 'about' }
+      ],
+      extraPlugins: 'divarea'
     };
-    reader.readAsDataURL(file);
   }
 
   onAddPost() {
@@ -73,11 +81,6 @@ export class PostCreateComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    // const post: Post = {
-    //   id: null,
-    //   title: this.form.value.title,
-    //   content: this.form.value.content
-    // };
 
     if (this.mode === 'create') {
       this.postService.addPost(this.form.value.title, this.form.value.content, this.form.value.image);

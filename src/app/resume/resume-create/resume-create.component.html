@@ -6,12 +6,11 @@
         <div class="card-body">
           <form (submit)="onSubmit(myForm)" #myForm='ngForm'>
             <h5 class="card-title">Write your resume</h5>
-            <ckeditor [(ngModel)]="mycontent" 
-            #myckeditor="ngModel"
+            <ckeditor [(ngModel)]="mycontent"
+            #myckeditor
             name="myckeditor"
             required
-            [config]="ckeConfig" 
-            debounce="500" 
+            debounce="500"
             >
 	</ckeditor>
             <button type="submit" class="card-link mt-3">Save Resume</button>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 import { PostCreateComponent } from './post-create/post-create.component';
 import { PostListComponent } from './post-list/post-list.component';
@@ -16,7 +17,8 @@ import { AppRoutingModule } from '../app-routing.module';
     CommonModule,
     ReactiveFormsModule,
     NgxBootstrapModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CKEditorModule
   ]
 })
 export class PostModule {}

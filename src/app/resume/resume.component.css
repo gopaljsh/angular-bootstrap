@@ -1,0 +1,14 @@
+table.resume-table {
+  width: 100%;
+  border: 1px solid #dcdcdc;
+  margin: 15px 0;
+}
+table.resume-table > tbody > tr > td {
+  border: 2px dotted #dcdcdc;
+  padding: 10px;
+  vertical-align: top;
+}
+table.resume-table > tbody > tr > td:first-child {
+  font-weight: bold;
+  width: 20%;
+}

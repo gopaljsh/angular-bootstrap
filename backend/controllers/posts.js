@@ -3,11 +3,11 @@
 const Post = require('../models/post');
 
 exports.createPost = (req, res, next) => {
-  const url = req.protocol + '://' + req.get("host");
+
   const post = new Post({
     title: req.body.title,
     content: req.body.content,
-    imagePath: url + "/images/" + req.file.filename,
+    imagePath: req.body.imagePath,
     creator: req.userData.userId
   });
 
@@ -61,10 +61,7 @@ exports.getSinglePost = (req, res, next) => {
 
 exports.editPost = (req, res, next) => {
   let imagePath = req.body.imagePath;
-  if (req.file) {
-    const url = req.protocol + '://' + req.get("host");
-    imagePath = url + "/images/" + req.file.filename
-  }
+
   const post = new Post({
     _id: req.body.id,
     title: req.body.title,
@@ -72,7 +69,8 @@ exports.editPost = (req, res, next) => {
     imagePath: imagePath,
     creator: req.userData.userId
   });
- Post.updateOne({ _id: req.params.id, creator: req.userData.userId }, post)
+
+  Post.updateOne({ _id: req.params.id, creator: req.userData.userId }, post)
   .then((result) => {
     if (result.n > 0) {
       res.status(200).json({
@@ -83,7 +81,7 @@ exports.editPost = (req, res, next) => {
         message: "You are not allowed!"
       });
     }
-  })
+  });
 };
 
 exports.deletePost = (req, res, next) => {
@@ -99,8 +97,7 @@ exports.deletePost = (req, res, next) => {
           message: "You are not allowed!"
         });
       }
-
-    })
+  })
 };
 
 
